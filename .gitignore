@@ -1,0 +1,43 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Root local env / logs
+.env
+*.log
+
+# Laravel app
+api/.env
+api/.env.backup
+api/.env.production
+api/vendor/
+api/node_modules/
+api/public/build/
+api/public/hot
+api/public/storage
+api/storage/*.key
+api/storage/logs/
+api/storage/framework/cache/
+api/storage/framework/sessions/
+api/storage/framework/views/
+api/bootstrap/cache/*.php
+api/bootstrap/cache/packages.php
+api/bootstrap/cache/services.php
+api/.phpunit.result.cache
+api/.phpunit.cache/
+
+# React app
+web/.env
+web/.env.local
+web/.env.*.local
+web/node_modules/
+web/dist/
+web/coverage/
+
+# Misc generated files
+*.tmp
+*.cache

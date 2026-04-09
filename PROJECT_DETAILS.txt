@@ -1,0 +1,194 @@
+eshopping Project Details
+=========================
+
+Overview
+--------
+This project is a full-stack eCommerce application built with:
+- Frontend: React + Vite
+- Backend: Laravel REST API
+- Database: MySQL
+- Payments: Stripe Payment Intents
+
+Project Structure
+-----------------
+- api/    Laravel backend
+- web/    React frontend
+- docs/   API/Postman docs
+
+Backend Work Completed
+----------------------
+- Laravel API scaffolded and configured
+- Sanctum-based token authentication
+- User auth endpoints:
+  - register
+  - login
+  - logout
+  - current user
+  - forgot password
+  - reset password
+- Storefront endpoints:
+  - categories
+  - products list with search/filter/pagination
+  - featured products
+  - single product detail
+- Cart endpoints:
+  - get cart
+  - add item
+  - sync guest cart
+  - update quantity
+  - remove item
+- Checkout endpoints:
+  - create Stripe payment intent
+  - confirm order
+- Account endpoints:
+  - profile
+  - update profile
+  - order history
+  - order detail
+  - order tracking
+- Admin endpoints:
+  - dashboard stats
+  - category CRUD
+  - product CRUD
+  - order status update
+  - user block/unblock
+
+Database / Models
+-----------------
+Main models implemented:
+- User
+- Category
+- Product
+- ProductImage
+- CartItem
+- Address
+- Order
+- OrderItem
+
+Seeder / Demo Data
+------------------
+- Demo admin user:
+  - email: admin@eshopping.test
+  - password: password
+- Demo customer user:
+  - email: customer@eshopping.test
+  - password: password
+- 100+ seeded products with:
+  - name
+  - description
+  - price
+  - category
+  - placeholder image URLs
+- Dedicated seeder added:
+  - ProductCatalogSeeder
+
+Frontend Work Completed
+-----------------------
+- React app scaffolded with Vite
+- Routing added for:
+  - /
+  - /products
+  - /products/:slug
+  - /cart
+  - /checkout
+  - /order-confirmation/:orderId
+  - /account
+  - /admin
+  - /login
+  - /register
+  - /forgot-password
+  - /reset-password
+- Global API client with auth token support
+- Zustand auth store
+- Zustand cart store
+- Toast/alert notification system
+- Dynamic/generated logo component
+- Product listing page
+- Product detail page
+- Cart page
+- Checkout page
+- Account page
+- Admin panel page
+
+UI / UX Improvements
+--------------------
+- Modern gradients and layered background
+- Refreshed header and branding
+- Improved hero section
+- Category showcase cards
+- Better product cards
+- Responsive catalog layout
+- Empty-state and results messages
+- Route loading state
+- Success/error/info toast messages
+- Error messages use clear red styling
+
+Stripe Notes
+------------
+- Frontend reads:
+  - web/.env
+  - VITE_STRIPE_PUBLISHABLE_KEY
+- Backend reads:
+  - api/.env
+  - STRIPE_KEY
+  - STRIPE_SECRET
+  - STRIPE_WEBHOOK_SECRET
+
+Important Environment Notes
+---------------------------
+- Backend APP_URL should be:
+  APP_URL=http://127.0.0.1:8000
+- Frontend API URL should be:
+  VITE_API_URL=http://127.0.0.1:8000/api
+
+Files Added / Updated Recently
+------------------------------
+- .gitignore
+- README.md
+- docs/postman_collection.json
+- api/database/seeders/ProductCatalogSeeder.php
+- web/src/components/ToastContainer.jsx
+- web/src/store/toast.js
+- web/src/components/BrandLogo.jsx
+- multiple frontend pages/components/styles
+
+Verification Completed
+----------------------
+- PHP syntax checks for updated backend files
+- npm run lint
+- npm run build
+
+Run Commands
+------------
+Backend:
+1. cd api
+2. php artisan migrate:fresh --seed
+3. php artisan storage:link
+4. php artisan serve
+
+Frontend:
+1. cd web
+2. npm.cmd install
+3. npm.cmd run dev
+
+Admin Access
+------------
+- URL: http://localhost:5173/admin
+- Login first with admin demo account if redirected
+
+Known Notes
+-----------
+- ProductCatalogSeeder currently exists and is callable directly
+- Current seeder structure can still be cleaned further if needed
+- Stripe placeholder key can hide the UI warning, but real payments need a real Stripe test key
+
+Suggested Next Improvements
+---------------------------
+- Separate seeders cleanly by domain:
+  - AdminUserSeeder
+  - CustomerSeeder
+  - CategorySeeder
+  - ProductCatalogSeeder
+- Improve admin layout further with sidebar/dashboard widgets
+- Add skeleton loaders
+- Add automated tests for API and frontend flows

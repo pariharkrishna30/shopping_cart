@@ -1,0 +1,67 @@
+services:
+  backend:
+    image: pariharkrishna30/ecom-backend:1.0
+    # build:
+      # context: ./api
+      # dockerfile: ../docker/php/Dockerfile
+    container_name: ecom_api
+    # volumes:
+    #   - ./api:/var/www
+    depends_on:
+      - db
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: ecom
+      DB_USERNAME: root
+      DB_PASSWORD: root
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_server
+    ports:
+      - "8000:80"
+    volumes:
+    #   - ./api:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+
+  frontend:
+    image: pariharkrishna30/ecom-frontend:1.0
+    # build:
+    #   context: ./web
+    container_name: react_web
+    ports:
+      - "3000:80"
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ecom
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data:

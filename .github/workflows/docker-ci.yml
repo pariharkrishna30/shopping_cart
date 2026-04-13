@@ -25,11 +25,11 @@ jobs:
 
       - name: Build Backend Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecom-backend:$VERSION ./backend
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecom-backend:$VERSION ./api
 
       - name: Build Frontend Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecom-frontend:$VERSION ./frontend
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/ecom-frontend:$VERSION ./web
 
       - name: Push Backend Image
         run: |

@@ -1,6 +1,6 @@
 services:
   backend:
-    image: pariharkrishna30/ecom-backend:1.2
+    image: pariharkrishna30/ecom-backend:latest
     # build:
       # context: ./api
       # dockerfile: ../docker/php/Dockerfile
@@ -29,7 +29,7 @@ services:
       - backend
 
   frontend:
-    image: pariharkrishna30/ecom-frontend:1.2
+    image: pariharkrishna30/ecom-frontend:latest
     # build:
     #   context: ./web
     container_name: react_web
